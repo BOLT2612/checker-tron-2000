@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>CHECKER TRON</title>
+</head>
+<body>
+  <h2>CHECKER TRON 2000</h2>
+  <input type="text" id="playermove" name="playermove">
+    <button onclick='submitMove()'>Enter</button>
+    <p id="somethingToShow">no communication yet</p>
+  <script>
+    var bigmove = document.getElementById("playermove").value;
+    function submitMove() {
+      console.log("bigmove = ", bigmove);
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        document.getElementById('somethingToShow').innerHTML =this.responseText;
+      }
+      xhttp.open("GET", 'http://localhost:3000/move?m=' + bigmove, true);
+      xhttp.send();
+    }
+  </script>
+</body>
